@@ -10,9 +10,16 @@ function App() {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchWeather = async (city) => {
+  const fetchWeather = async (query) => {
     const API_KEY = 'ecfe6078041d40d3b68133325242603';
-    const API_URL = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`;
+    
+    // Check if input is a 6-digit Indian pincode
+    let searchQuery = query;
+    if (/^\d{6}$/.test(query.trim())) {
+      searchQuery = `in:${query.trim()}`; // Format for Indian postal codes
+    }
+    
+    const API_URL = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(searchQuery)}`;
 
     setIsLoading(true);
     setError(false);
