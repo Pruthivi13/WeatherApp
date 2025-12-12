@@ -1,17 +1,24 @@
-# Weather App ☀️
+# Weather App ☀️🌧️❄️
 
-A modern weather application built with **React**, **Vite**, and **Tailwind CSS** featuring real-time weather data, city autocomplete suggestions, and responsive glassmorphism UI design.
+A modern weather application built with **React**, **Vite**, and **Tailwind CSS** featuring real-time weather data, dynamic weather-based visual effects, city autocomplete suggestions, and responsive glassmorphism UI design.
 
 Search by city name or pincode to get instant weather updates including temperature, wind speed, humidity, pressure, and current conditions powered by **WeatherAPI**.
 
 ## 🚀 Features
 
-- 🔍 **City Autocomplete** - Suggestions appear as you type
-- 📍 **Pincode Search** - Search by Indian postal codes
+- 🔍 **City Autocomplete** - Smart suggestions appear as you type
+- 📍 **Pincode Search** - Search by Indian postal codes (6 digits)
 - 🌡️ **Weather Metrics** - Temperature, wind, humidity, pressure & conditions
-- 🎨 **Animated Background** - Beautiful SVG gradient animations
-- 📱 **Responsive Design** - Works on mobile, tablet & desktop
+- 🎨 **Dynamic Weather Effects** - Background changes based on real-time weather:
+  - ☀️ **Sunny** - Warm yellows and oranges with bright animations
+  - 🌙 **Clear Night** - Dark sky with twinkling stars
+  - 🌧️ **Rainy** - Blue/gray tones with animated raindrops
+  - ❄️ **Snowy** - White/blue palette with falling snowflakes
+  - ⛈️ **Stormy** - Dark atmosphere with fast-paced animations
+  - ☁️ **Cloudy** - Gray gradients with slower, calmer animations
+- 📱 **Responsive Design** - Optimized for mobile, tablet & desktop
 - ⚡ **Fast Performance** - Built with Vite for instant HMR
+- 🎭 **Smooth Transitions** - Seamless color transitions between weather states
 
 ## 🛠️ Tech Stack
 
