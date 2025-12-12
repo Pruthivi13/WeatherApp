@@ -1,16 +1,38 @@
-# React + Vite
+# Weather App ☀️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern weather application built with **React**, **Vite**, and **Tailwind CSS** featuring real-time weather data, city autocomplete suggestions, and responsive glassmorphism UI design.
 
-Currently, two official plugins are available:
+Search by city name or pincode to get instant weather updates including temperature, wind speed, humidity, pressure, and current conditions powered by **WeatherAPI**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔍 **City Autocomplete** - Suggestions appear as you type
+- 📍 **Pincode Search** - Search by Indian postal codes
+- 🌡️ **Weather Metrics** - Temperature, wind, humidity, pressure & conditions
+- 🎨 **Animated Background** - Beautiful SVG gradient animations
+- 📱 **Responsive Design** - Works on mobile, tablet & desktop
+- ⚡ **Fast Performance** - Built with Vite for instant HMR
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- React 19
+- Vite 7
+- Tailwind CSS 4
+- WeatherAPI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Installation
+
+```bash
+npm install
+npm run dev
+```
+
+## 🌐 Live Demo
+
+Deployed on Vercel
+
+## 👨‍💻 Author
+
+**Pruthiviraj Sahu**
+- [GitHub](https://github.com/Pruthivi13)
+- [Portfolio](https://pruthivi13.github.io/personal-website/)
