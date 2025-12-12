@@ -45,7 +45,10 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      <AnimatedBackground />
+      <AnimatedBackground 
+        weatherCondition={weatherData?.current?.condition?.text}
+        isDay={weatherData?.current?.is_day}
+      />
       
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header />

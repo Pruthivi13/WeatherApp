@@ -7,6 +7,7 @@ const SearchBar = ({ onSearch, isLoading }) => {
   const [isSearching, setIsSearching] = useState(false);
   const inputRef = useRef(null);
   const suggestionsRef = useRef(null);
+  const shouldFetchSuggestionsRef = useRef(true);
 
   const API_KEY = 'ecfe6078041d40d3b68133325242603';
 
@@ -15,6 +16,12 @@ const SearchBar = ({ onSearch, isLoading }) => {
     const fetchSuggestions = async () => {
       if (city.trim().length < 1) {
         setSuggestions([]);
+        setShowSuggestions(false);
+        return;
+      }
+
+      // Don't fetch if we shouldn't (e.g., after clicking a suggestion)
+      if (!shouldFetchSuggestionsRef.current) {
         return;
       }
 
@@ -32,7 +39,10 @@ const SearchBar = ({ onSearch, isLoading }) => {
         if (response.ok) {
           const data = await response.json();
           setSuggestions(data);
-          setShowSuggestions(true);
+          // Only show suggestions if there are results
+          if (data.length > 0) {
+            setShowSuggestions(true);
+          }
         }
       } catch (error) {
         console.error('Error fetching suggestions:', error);
@@ -77,7 +87,9 @@ const SearchBar = ({ onSearch, isLoading }) => {
   };
 
   const handleSuggestionClick = (suggestion) => {
+    shouldFetchSuggestionsRef.current = false; // Prevent fetching suggestions
     setCity(suggestion.name);
+    setSuggestions([]);
     setShowSuggestions(false);
     onSearch(suggestion.name);
   };
@@ -108,9 +120,12 @@ const SearchBar = ({ onSearch, isLoading }) => {
             ref={inputRef}
             type="text"
             value={city}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => {
+              shouldFetchSuggestionsRef.current = true; // Re-enable fetching when user types
+              setCity(e.target.value);
+            }}
             onKeyDown={handleKeyDown}
-            onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
+
             placeholder="Enter a City / Pincode"
             className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/80 backdrop-blur-sm 
                        focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent
@@ -126,7 +141,11 @@ const SearchBar = ({ onSearch, isLoading }) => {
               {suggestions.map((suggestion, index) => (
                 <li
                   key={index}
-                  onClick={() => handleSuggestionClick(suggestion)}
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleSuggestionClick(suggestion);
+                  }}
                   className="px-4 py-3 cursor-pointer hover:bg-sky-50 transition-colors border-b border-gray-100 last:border-b-0"
                 >
                   <div className="font-medium text-gray-800">{suggestion.name}</div>
