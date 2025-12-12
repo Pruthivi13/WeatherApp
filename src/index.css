@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* Base styles */
 html {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 body {
@@ -11,8 +9,18 @@ body {
   padding: 0;
   min-height: 100vh;
   background-color: #87ceeb;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
+}
+
+/* Utility classes for fonts */
+.font-bricolage {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.font-manrope {
+  font-family: 'Manrope', sans-serif;
 }

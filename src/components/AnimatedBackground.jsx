@@ -1,10 +1,10 @@
 const AnimatedBackground = () => {
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden">
+    <div className="fixed top-0 left-0 w-full h-full z-[-1] overflow-hidden">
       <svg 
         viewBox="0 0 100 100" 
         preserveAspectRatio="xMidYMid slice"
-        className="w-[1500px] h-screen absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <defs>
           <radialGradient id="Gradient1" cx="50%" cy="50%" fx="0.441602%" fy="50%" r=".5">

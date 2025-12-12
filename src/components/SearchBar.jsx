@@ -35,24 +35,24 @@ const SearchBar = ({ onSearch, isLoading }) => {
       </div>
 
       {/* Search Input and Button */}
-      <div className="flex w-full gap-2">
+      <div className="flex flex-col md:flex-row w-full gap-3">
         <input
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Enter Your City"
-          className="flex-1 px-4 py-3 rounded-lg border border-gray-300 bg-white/80 backdrop-blur-sm 
+          className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/80 backdrop-blur-sm 
                      focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent
                      placeholder-gray-500 text-gray-800 font-medium transition-all"
         />
         <button
           onClick={handleSubmit}
           disabled={isLoading}
-          className="px-6 py-3 bg-gray-900 text-white rounded-lg font-medium
+          className="w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-lg font-medium
                      hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500
                      disabled:opacity-50 disabled:cursor-not-allowed transition-all
-                     flex items-center gap-2"
+                     flex items-center justify-center gap-2"
         >
           {isLoading ? (
             <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
