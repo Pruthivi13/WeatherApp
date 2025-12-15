@@ -5,6 +5,8 @@ import SearchBar from './components/SearchBar';
 import WeatherDisplay from './components/WeatherDisplay';
 import Footer from './components/Footer';
 
+import { ThemeProvider } from './context/ThemeContext';
+
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(false);
@@ -44,23 +46,25 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative">
-      <AnimatedBackground 
-        weatherCondition={weatherData?.current?.condition?.text}
-        isDay={weatherData?.current?.is_day}
-      />
-      
-      <div className="relative z-10 flex flex-col min-h-screen">
-        <Header />
+    <ThemeProvider>
+      <div className="min-h-screen flex flex-col relative transition-colors duration-300">
+        <AnimatedBackground 
+          weatherCondition={weatherData?.current?.condition?.text}
+          isDay={weatherData?.current?.is_day}
+        />
         
-        <main className="flex-1">
-          <SearchBar onSearch={fetchWeather} isLoading={isLoading} />
-          <WeatherDisplay data={weatherData} error={error} />
-        </main>
-        
-        <Footer />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Header />
+          
+          <main className="flex-1">
+            <SearchBar onSearch={fetchWeather} isLoading={isLoading} />
+            <WeatherDisplay data={weatherData} error={error} />
+          </main>
+          
+          <Footer />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

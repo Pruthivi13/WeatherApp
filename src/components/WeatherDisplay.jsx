@@ -75,7 +75,7 @@ const WeatherDisplay = ({ data, error }) => {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       {/* City Name */}
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center pb-4 mb-6 border-b border-gray-300/50">
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white text-center pb-4 mb-6 border-b border-gray-300/50 dark:border-gray-700/50 transition-colors">
         {location.name}, {location.country}
       </h2>
 

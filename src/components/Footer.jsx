@@ -5,7 +5,7 @@ const Footer = () => {
       <div className="flex justify-center gap-6 mb-4">
         <a
           href="https://www.instagram.com/heyiheardyouweredead/"
-          className="text-gray-700 hover:text-pink-500 transition-colors"
+          className="text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-colors"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -16,7 +16,7 @@ const Footer = () => {
         
         <a
           href="https://twitter.com/pjsucksatlife"
-          className="text-gray-700 hover:text-gray-900 transition-colors"
+          className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -27,7 +27,7 @@ const Footer = () => {
         
         <a
           href="https://github.com/Pruthivi13"
-          className="text-gray-700 hover:text-gray-900 transition-colors"
+          className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <p className="text-gray-700 font-medium">
+      <p className="text-gray-700 dark:text-gray-400 font-medium transition-colors">
         © Pruthiviraj Sahu 2024. All rights reserved.
       </p>
     </footer>

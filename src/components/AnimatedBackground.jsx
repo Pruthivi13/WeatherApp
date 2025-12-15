@@ -1,3 +1,5 @@
+import { useTheme } from '../context/ThemeContext';
+
 // Helper function to determine weather type from condition text
 const getWeatherType = (conditionText, isDay) => {
   if (!conditionText) return 'default';
@@ -33,55 +35,114 @@ const getWeatherType = (conditionText, isDay) => {
 };
 
 const AnimatedBackground = ({ weatherCondition = null, isDay = 1 }) => {
+  const { theme } = useTheme(); // Access global theme
   const weatherType = getWeatherType(weatherCondition, isDay);
+  const isDark = theme === 'dark';
   
-  // Weather-specific color schemes
+  // Weather-specific color schemes (Light & Dark)
   const weatherColors = {
     sunny: {
-      gradient1: { start: 'rgba(255, 200, 0, 1)', end: 'rgba(255, 200, 0, 0)' },
-      gradient2: { start: 'rgba(255, 150, 50, 1)', end: 'rgba(255, 150, 50, 0)' },
-      gradient3: { start: 'rgba(255, 220, 100, 1)', end: 'rgba(255, 220, 100, 0)' },
-      bg: '#87ceeb'
+      light: {
+        gradient1: { start: 'rgba(255, 200, 0, 1)', end: 'rgba(255, 200, 0, 0)' },
+        gradient2: { start: 'rgba(255, 150, 50, 1)', end: 'rgba(255, 150, 50, 0)' },
+        gradient3: { start: 'rgba(255, 220, 100, 1)', end: 'rgba(255, 220, 100, 0)' },
+        bg: '#87ceeb'
+      },
+      dark: { // Sunset/Twilight vibe for Dark Mode Sunny
+        gradient1: { start: 'rgba(200, 100, 50, 1)', end: 'rgba(200, 100, 50, 0)' },
+        gradient2: { start: 'rgba(100, 50, 100, 1)', end: 'rgba(100, 50, 100, 0)' },
+        gradient3: { start: 'rgba(150, 80, 80, 1)', end: 'rgba(150, 80, 80, 0)' },
+        bg: '#2c3e50'
+      }
     },
     clear_night: {
-      gradient1: { start: 'rgba(100, 100, 200, 1)', end: 'rgba(100, 100, 200, 0)' },
-      gradient2: { start: 'rgba(150, 150, 255, 1)', end: 'rgba(150, 150, 255, 0)' },
-      gradient3: { start: 'rgba(200, 200, 255, 1)', end: 'rgba(200, 200, 255, 0)' },
-      bg: '#1a1a3e'
+      light: {
+        gradient1: { start: 'rgba(100, 100, 200, 1)', end: 'rgba(100, 100, 200, 0)' },
+        gradient2: { start: 'rgba(150, 150, 255, 1)', end: 'rgba(150, 150, 255, 0)' },
+        gradient3: { start: 'rgba(200, 200, 255, 1)', end: 'rgba(200, 200, 255, 0)' },
+        bg: '#1a1a3e'
+      },
+      dark: { // Deep Space
+        gradient1: { start: 'rgba(40, 20, 60, 1)', end: 'rgba(40, 20, 60, 0)' },
+        gradient2: { start: 'rgba(20, 30, 80, 1)', end: 'rgba(20, 30, 80, 0)' },
+        gradient3: { start: 'rgba(60, 30, 90, 1)', end: 'rgba(60, 30, 90, 0)' },
+        bg: '#0f0f1a'
+      }
     },
     rainy: {
-      gradient1: { start: 'rgba(100, 150, 200, 1)', end: 'rgba(100, 150, 200, 0)' },
-      gradient2: { start: 'rgba(80, 120, 180, 1)', end: 'rgba(80, 120, 180, 0)' },
-      gradient3: { start: 'rgba(120, 160, 200, 1)', end: 'rgba(120, 160, 200, 0)' },
-      bg: '#5a7a9a'
+      light: {
+        gradient1: { start: 'rgba(100, 150, 200, 1)', end: 'rgba(100, 150, 200, 0)' },
+        gradient2: { start: 'rgba(80, 120, 180, 1)', end: 'rgba(80, 120, 180, 0)' },
+        gradient3: { start: 'rgba(120, 160, 200, 1)', end: 'rgba(120, 160, 200, 0)' },
+        bg: '#5a7a9a'
+      },
+      dark: { // Dark Stormy Rain
+        gradient1: { start: 'rgba(30, 40, 60, 1)', end: 'rgba(30, 40, 60, 0)' },
+        gradient2: { start: 'rgba(40, 50, 70, 1)', end: 'rgba(40, 50, 70, 0)' },
+        gradient3: { start: 'rgba(20, 30, 50, 1)', end: 'rgba(20, 30, 50, 0)' },
+        bg: '#1e2732'
+      }
     },
     snowy: {
-      gradient1: { start: 'rgba(200, 220, 255, 1)', end: 'rgba(200, 220, 255, 0)' },
-      gradient2: { start: 'rgba(220, 230, 255, 1)', end: 'rgba(220, 230, 255, 0)' },
-      gradient3: { start: 'rgba(180, 200, 240, 1)', end: 'rgba(180, 200, 240, 0)' },
-      bg: '#d0e8f0'
+      light: {
+        gradient1: { start: 'rgba(200, 220, 255, 1)', end: 'rgba(200, 220, 255, 0)' },
+        gradient2: { start: 'rgba(220, 230, 255, 1)', end: 'rgba(220, 230, 255, 0)' },
+        gradient3: { start: 'rgba(180, 200, 240, 1)', end: 'rgba(180, 200, 240, 0)' },
+        bg: '#d0e8f0'
+      },
+      dark: { // Night Snow
+        gradient1: { start: 'rgba(40, 50, 70, 1)', end: 'rgba(40, 50, 70, 0)' },
+        gradient2: { start: 'rgba(50, 60, 90, 1)', end: 'rgba(50, 60, 90, 0)' },
+        gradient3: { start: 'rgba(30, 40, 60, 1)', end: 'rgba(30, 40, 60, 0)' },
+        bg: '#1e293b'
+      }
     },
     stormy: {
-      gradient1: { start: 'rgba(80, 80, 120, 1)', end: 'rgba(80, 80, 120, 0)' },
-      gradient2: { start: 'rgba(100, 100, 140, 1)', end: 'rgba(100, 100, 140, 0)' },
-      gradient3: { start: 'rgba(60, 60, 100, 1)', end: 'rgba(60, 60, 100, 0)' },
-      bg: '#4a5a6a'
+      light: {
+        gradient1: { start: 'rgba(80, 80, 120, 1)', end: 'rgba(80, 80, 120, 0)' },
+        gradient2: { start: 'rgba(100, 100, 140, 1)', end: 'rgba(100, 100, 140, 0)' },
+        gradient3: { start: 'rgba(60, 60, 100, 1)', end: 'rgba(60, 60, 100, 0)' },
+        bg: '#4a5a6a'
+      },
+      dark: { // Intense Storm
+        gradient1: { start: 'rgba(20, 10, 30, 1)', end: 'rgba(20, 10, 30, 0)' },
+        gradient2: { start: 'rgba(30, 20, 50, 1)', end: 'rgba(30, 20, 50, 0)' },
+        gradient3: { start: 'rgba(10, 5, 20, 1)', end: 'rgba(10, 5, 20, 0)' },
+        bg: '#120a1f'
+      }
     },
     cloudy: {
-      gradient1: { start: 'rgba(150, 150, 170, 1)', end: 'rgba(150, 150, 170, 0)' },
-      gradient2: { start: 'rgba(170, 170, 190, 1)', end: 'rgba(170, 170, 190, 0)' },
-      gradient3: { start: 'rgba(130, 130, 150, 1)', end: 'rgba(130, 130, 150, 0)' },
-      bg: '#a0b0c0'
+      light: {
+        gradient1: { start: 'rgba(150, 150, 170, 1)', end: 'rgba(150, 150, 170, 0)' },
+        gradient2: { start: 'rgba(170, 170, 190, 1)', end: 'rgba(170, 170, 190, 0)' },
+        gradient3: { start: 'rgba(130, 130, 150, 1)', end: 'rgba(130, 130, 150, 0)' },
+        bg: '#a0b0c0'
+      },
+      dark: { // Night Clouds
+        gradient1: { start: 'rgba(40, 40, 50, 1)', end: 'rgba(40, 40, 50, 0)' },
+        gradient2: { start: 'rgba(50, 50, 60, 1)', end: 'rgba(50, 50, 60, 0)' },
+        gradient3: { start: 'rgba(30, 30, 40, 1)', end: 'rgba(30, 30, 40, 0)' },
+        bg: '#1f2937'
+      }
     },
     default: {
-      gradient1: { start: 'rgba(255, 0, 255, 1)', end: 'rgba(255, 0, 255, 0)' },
-      gradient2: { start: 'rgba(255, 255, 0, 1)', end: 'rgba(255, 255, 0, 0)' },
-      gradient3: { start: 'rgba(0, 255, 255, 1)', end: 'rgba(0, 255, 255, 0)' },
-      bg: '#87ceeb'
+      light: {
+        gradient1: { start: 'rgba(255, 0, 255, 1)', end: 'rgba(255, 0, 255, 0)' },
+        gradient2: { start: 'rgba(255, 255, 0, 1)', end: 'rgba(255, 255, 0, 0)' },
+        gradient3: { start: 'rgba(0, 255, 255, 1)', end: 'rgba(0, 255, 255, 0)' },
+        bg: '#87ceeb'
+      },
+      dark: {
+        gradient1: { start: 'rgba(80, 0, 80, 1)', end: 'rgba(80, 0, 80, 0)' },
+        gradient2: { start: 'rgba(80, 80, 0, 1)', end: 'rgba(80, 80, 0, 0)' },
+        gradient3: { start: 'rgba(0, 80, 80, 1)', end: 'rgba(0, 80, 80, 0)' },
+        bg: '#111827'
+      }
     }
   };
   
-  const colors = weatherColors[weatherType] || weatherColors.default;
+  const currentMode = isDark ? 'dark' : 'light';
+  const colors = (weatherColors[weatherType] || weatherColors.default)[currentMode];
   
   // Animation speeds based on weather
   const speeds = {
